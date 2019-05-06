@@ -57,6 +57,7 @@ group :development do
   gem 'better_errors'     # cool error page
   gem 'binding_of_caller' # console for better_errors
   gem 'xray-rails'        # cmd+shift+x (Mac) or ctrl+shift+x for show partial template
+  gem 'annotate'
 end
 
 group :test do
