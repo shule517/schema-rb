@@ -14,6 +14,16 @@ class Github
     source = fetch_source(url)
     hash = JSON.parse(source)
 
+    if hash['items'].blank?
+      puts "error:hash['items'].blank?-------------------"
+      pp hash: hash
+      puts "-----------"
+      pp source: source
+      puts "-----------"
+      pp url: hash
+      return
+    end
+
     hash['items'].each do |item|
       puts "----------------"
 
