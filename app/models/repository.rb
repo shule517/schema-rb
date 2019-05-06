@@ -16,4 +16,5 @@
 #
 
 class Repository < ApplicationRecord
+  scope :rails, -> { where(rails: true) }
 end
