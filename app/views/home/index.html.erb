@@ -1,2 +1,19 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Railsランキング</h1>
+
+<table border="1px">
+  <tr>
+    <th bgcolor="#EE0000"><font color="#FFFFFF">スター</font></th>
+    <th bgcolor="#EE0000"><font color="#FFFFFF">リポジトリ名</font></th>
+    <th bgcolor="#EE0000"><font color="#FFFFFF">説明</font></th>
+  </tr>
+
+  <% @repositories.each do |repository| %>
+    <tr>
+      <td>☆<%= repository.stargazers_count > 1000 ? "#{(repository.stargazers_count / 1000.0).round(1)}k" : repository.stargazers_count %></td>
+      <td>
+        <%= link_to repository.full_name, repository.html_url %>
+      </td>
+      <td><%= repository.description %></td>
+    </tr>
+  <% end %>
+</table>

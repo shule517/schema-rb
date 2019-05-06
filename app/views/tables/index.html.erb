@@ -1,0 +1,13 @@
+<h1>テーブル名一覧</h1>
+
+<table border="1px">
+  <tr>
+    <th bgcolor="#EE0000"><font color="#FFFFFF">テーブル名</font></th>
+  </tr>
+
+  <% @tables.each do |table| %>
+    <tr>
+      <td><%= table.name %></td>
+    </tr>
+  <% end %>
+</table>
