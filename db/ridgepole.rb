@@ -16,3 +16,8 @@ create_table "repositories", force: :cascade do |t|
   t.boolean :rails, default: false
   t.timestamps
 end
+
+create_table "tables", force: :cascade do |t|
+  t.string :name
+  t.timestamps
+end
