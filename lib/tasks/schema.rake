@@ -56,4 +56,23 @@ namespace :schema do
     # pp '------------'
     # pp user: table_names.grep(/.*User.*/)
   end
+
+  task update_table: :environment do
+    urls = Repository.rails.map do |repository|
+      "https://raw.githubusercontent.com/#{repository.full_name}/master/db/schema.rb"
+    end
+    table_names = urls.flat_map do |url|
+      schema = Schema.new(url)
+      schema.table_names
+    end
+
+    table_names.each do |table_name|
+      next if Table.where(name: table_name).exists?
+      table = Table.create! do |table|
+        table.name = table_name
+      end
+
+      pp table: table
+    end
+  end
 end
