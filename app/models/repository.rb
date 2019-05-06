@@ -13,6 +13,7 @@
 #  language         :string
 #  stargazers_count :integer
 #  pushed_at        :datetime
+#  rails            :boolean          default(FALSE)
 #
 
 class Repository < ApplicationRecord
