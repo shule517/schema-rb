@@ -2,11 +2,16 @@ require 'net/http'
 
 class Github
   def search_repository(page: 1)
-    url = "https://api.github.com/search/repositories?q=topic:rails&sort=stars&order=desc&page=#{page}"
+    # url = "https://api.github.com/search/repositories?q=topic:rails&sort=stars&order=desc&page=#{page}"
+    # search(url)
+    # url = "https://api.github.com/search/repositories?q=language:Ruby&sort=stars&order=desc&page=#{page}"
+    # search(url)
+    # url = "https://api.github.com/search/repositories?q=topic:ruby&sort=stars&order=desc&page=#{page}"
+    # search(url)
+
+    url = "https://api.github.com/search/repositories?q=rails&sort=stars&order=desc&page=#{page}"
     search(url)
-    url = "https://api.github.com/search/repositories?q=language:Ruby&sort=stars&order=desc&page=#{page}"
-    search(url)
-    url = "https://api.github.com/search/repositories?q=topic:ruby&sort=stars&order=desc&page=#{page}"
+    url = "https://api.github.com/search/repositories?q=ruby&sort=stars&order=desc&page=#{page}"
     search(url)
   end
 

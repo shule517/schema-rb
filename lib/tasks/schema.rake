@@ -1,7 +1,7 @@
 namespace :schema do
   task update: :environment do
     github = Github.new
-    50.times do |i|
+    20.times do |i|
       hash = github.search_repository(page: i)
     end
 
