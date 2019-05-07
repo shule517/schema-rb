@@ -52,7 +52,7 @@ class Github
   end
 
   def fetch_source(url)
-    uri = URI.parse(url)
+    uri = URI.parse("#{url}&client_id=#{ENV['GITHUB_CLIENT_ID']}&client_secret=#{ENV['GITHUB_CLIENT_SECRET']}")
     Net::HTTP.get(uri)
   end
 end
