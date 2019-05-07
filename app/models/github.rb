@@ -188,11 +188,11 @@ class Github
 
   def exists_db_schema?(repository_name)
     url = "https://raw.githubusercontent.com/#{repository_name}/master/db/schema.rb"
-    fetch_source(url) =~ /ActiveRecord::Schema.define/
+    !!(fetch_source(url) =~ /ActiveRecord::Schema.define/)
   end
 
   def fetch_source(url)
-    uri = URI.parse("#{url}&client_id=#{ENV['GITHUB_CLIENT_ID']}&client_secret=#{ENV['GITHUB_CLIENT_SECRET']}")
+    uri = URI.parse(url)
     Net::HTTP.get(uri)
   end
 end
