@@ -1,0 +1,31 @@
+<h1>Simulators#index</h1>
+<p>Find me in app/views/simulators/index.html.erb</p>
+
+<div>
+  モデル名：<%= @model_name %>
+</div>
+<div>
+  テーブル名：<%= @table_name %>
+</div>
+
+<br>
+
+<div>
+  <%= "#{@model_name.underscore} = #{@model_name}.find(123)" %>
+</div>
+<br>
+<div>
+  <%= "#{@table_name} = #{@model_name}.all" %>
+</div>
+<br>
+
+
+<div>
+  <%= "#{@table_name}.each do |#{@model_name.underscore}|" %>
+</div>
+<div>
+  &nbsp;&nbsp;<%= "#{@model_name.underscore}.attributes" %>
+</div>
+<div>
+  end
+</div>
