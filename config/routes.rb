@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'home/index'
-  get 'tables/index'
+  resources :tables
+  resources :homes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
