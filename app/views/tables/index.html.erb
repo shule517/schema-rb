@@ -3,11 +3,22 @@
 <table border="1px">
   <tr>
     <th bgcolor="#EE0000"><font color="#FFFFFF">テーブル名</font></th>
+    <th bgcolor="#EE0000"><font color="#FFFFFF">repositories</font></th>
   </tr>
 
   <% @tables.each do |table| %>
     <tr>
       <td><%= table.name %></td>
+      <td>
+        <% table.links.joins(:repository).merge(Repository.order(stargazers_count: :desc)).each do |link| %>
+          <div>
+            <% repository = link.repository %>
+            <% repository.full_name %>
+            <%= "☆#{repository.stargazers_count}" %>
+            <%= link_to repository.full_name, link.source_url %>
+          </div>
+      <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

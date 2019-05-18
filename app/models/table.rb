@@ -9,4 +9,5 @@
 #
 
 class Table < ApplicationRecord
+  has_many :links, class_name: 'TableLink', dependent: :destroy
 end

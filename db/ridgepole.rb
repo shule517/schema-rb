@@ -21,3 +21,11 @@ create_table "tables", force: :cascade do |t|
   t.string :name
   t.timestamps
 end
+
+create_table "table_links", force: :cascade do |t|
+  t.integer :table_id
+  t.integer :repository_id
+  t.string  :path # => db/schema.rb
+  t.integer :line # => 21
+  t.timestamps
+end

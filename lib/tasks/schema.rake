@@ -57,22 +57,24 @@ namespace :schema do
     # pp user: table_names.grep(/.*User.*/)
   end
 
+  def create_table_schema(table_name, repository)
+    table = Table.find_or_create_by(name: table_name)
+    unless table.links.where(repository: repository).exists?
+      table.links.create!(repository: repository, path: 'path', line: '99')
+    end
+
+    pp table: table
+  end
+
   task update_table: :environment do
     urls = Repository.rails.map do |repository|
-      "https://raw.githubusercontent.com/#{repository.full_name}/master/db/schema.rb"
+      [repository, "https://raw.githubusercontent.com/#{repository.full_name}/master/db/schema.rb"]
     end
-    table_names = urls.flat_map do |url|
+    urls.flat_map do |repository, url|
+      pp repository: repository, url: url
+
       schema = Schema.new(url)
-      schema.table_names
-    end
-
-    table_names.each do |table_name|
-      next if Table.where(name: table_name).exists?
-      table = Table.create! do |table|
-        table.name = table_name
-      end
-
-      pp table: table
+      schema.table_names.each { |table_name| create_table_schema(table_name, repository) }
     end
   end
 end
